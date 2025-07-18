@@ -5,12 +5,12 @@ This project enables daily monitoring of Malaysia’s media sentiment by dynamic
 
 The end-to-end data engineering project is orchestrated within Microsoft Fabric, providing centralized data management, processing, modeling, and visualization.
 
-## Project Architecture Overview
+## Architecture Overview
 1. **Data Ingestion**: Automatically retrieves up to 100 news articles daily using the Bing News Search API, focused on Malaysia’s latest headlines.
 
 2. **Data Storage**: Stores all retrieved news articles in a Delta Lake within Microsoft Fabric Lakehouse, ensuring structured and scalable storage.
 
-3. **Data Processing**: Uses PySpark Notebooks (`process_bing_news.ipynb`, `transform_bing_news.ipynb`) to:
+3. **Data Processing**: Uses PySpark Notebooks to:
    - Clean and structure the raw API data.
    - Apply sentiment scoring (Positive, Neutral, Negative, Mixed).
    - Prepare data for reporting in Power BI
@@ -65,7 +65,7 @@ This project was implemented entirely within the **Microsoft Fabric** ecosystem,
 6. Entire pipeline is scheduled and runs automatically daily at **10am MYT** via Microsoft Fabric scheduler.
 <img width="1168" height="855" alt="image" src="https://github.com/user-attachments/assets/3e153caf-36e3-4ce4-91ad-5231d074e0bb" />
 
-## 📡 Bing API Role
+## Bing API Role
 - Central to real-time news retrieval.
 - Ensures authoritative, market-specific, and dynamic news sourcing.
 - Eliminates need for manual web scraping.
