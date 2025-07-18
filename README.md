@@ -1,30 +1,21 @@
 # Malaysia News Sentiment Analytics
 ![](fabric.png)
 ## Introduction
-This project enables daily monitoring of Malaysia’s media sentiment by dynamically retrieving news articles, processing them using PySpark notebooks, storing structured data in Delta Lake format, and presenting insights via a Power BI dashboard—providing near real-time visibility into public media trends.
+This project represents a complete end-to-end data engineering solution for near real-time monitoring of Malaysia's news sentiment, fully implemented within Microsoft Fabric. It automates the daily retrieval of Malaysia-focused news articles using the Bing News Search API, processes the data using PySpark notebooks, stores structured results in Delta Lake format, and delivers actionable insights through a Power BI dashboard.
 
-The end-to-end data engineering project is orchestrated within Microsoft Fabric, providing centralized data management, processing, modeling, and visualization.
+The entire workflow is orchestrated within Microsoft Fabric, ensuring centralized data management, scalable processing, semantic modeling, and interactive visualization within a unified platform.
 
 ## Architecture Overview
 1. **Data Ingestion**: Automatically retrieves up to 100 news articles daily using the Bing News Search API, focused on Malaysia’s latest headlines.
 
 2. **Data Storage**: Stores all retrieved news articles in a Delta Lake within Microsoft Fabric Lakehouse, ensuring structured and scalable storage.
 
-3. **Data Processing**: Uses PySpark Notebooks to:
-   - Clean and structure the raw API data.
-   - Apply sentiment scoring (Positive, Neutral, Negative, Mixed).
-   - Prepare data for reporting in Power BI
+3. **Data Processing**: Uses PySpark Notebooks to process and transform data for downstream reporting.
     
-4. **Semantic Modeling**:
-   - Creates semantic models for business-friendly data presentation.
-   - Exposes data via SQL Analytics Endpoint for direct querying.
+4. **Semantic Modeling**: Creates semantic models for business-friendly data presentation.
+and exposes data via SQL Analytics Endpoint for direct querying.
 
-5. **Reporting**: Presents key insights through an interactive Power BI dashboard, showing:
-   - Total articles retrieved.
-   - Sentiment breakdown.
-   - Daily publication trends.
-   - Top headlines.
-   - Direct clickable access to negative sentiment news.
+5. **Reporting**: Presents key insights through an interactive Power BI dashboard, showing related key metrics.
 
 6. **Monitoring**: Uses Data Activator to trigger alerts when negative sentiment articles spike, enabling proactive response.
 
@@ -52,7 +43,7 @@ This project was implemented entirely within the **Microsoft Fabric** ecosystem,
      - `process_bing_news.ipynb`: Parses the raw JSON files retrieved from the Bing News API, structures the data, and stores it as a **Delta Table** in the Lakehouse.
      - `transform_bing_news.ipynb`: Reads the structured Delta Table, applies **sentiment scoring**, adds **reporting-specific** columns, and writes the final enriched dataset back to the Lakehouse in Delta format for reporting use.
 
-3. A **semantic model** is then created using the final Delta Table, enabling business-friendly reporting and analysis. It is further enhanced by adding **custom measures** such as sentiment  percentages to support detailed analysis and interactive reporting in Power BI.
+3. A **semantic model** is then created using the final Delta Table, enabling business-friendly reporting and analysis. It is further enhanced by adding **custom measures** such as **_sentiment  percentages_** to support detailed analysis and interactive reporting in Power BI.
    
 4.  The **Power BI dashboard** is built on top of this semantic model to visualize key metrics such as _**sentiment distribution**, **daily news trends**, **top providers**_, and allows users to explore news headlines with _**clickable URLs**_.
 <img width="1750" height="750" alt="image" src="https://github.com/user-attachments/assets/cd9b4784-a5c8-4fdb-b34a-044936787d96" />
@@ -63,8 +54,10 @@ This project was implemented entirely within the **Microsoft Fabric** ecosystem,
 <p/>
 
 6. Entire pipeline is scheduled and runs automatically daily at **10am MYT** via Microsoft Fabric scheduler.
-<img width="1168" height="855" alt="image" src="https://github.com/user-attachments/assets/3e153caf-36e3-4ce4-91ad-5231d074e0bb" />
-
+<p align="center">
+<img width="475" height="375" alt="image" src="https://github.com/user-attachments/assets/3e153caf-36e3-4ce4-91ad-5231d074e0bb" />
+<p/>
+   
 ## Bing API Role
 - Central to real-time news retrieval.
 - Ensures authoritative, market-specific, and dynamic news sourcing.
